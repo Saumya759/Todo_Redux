@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import AddTodo from "./components/addTodo";
+import TodoList from "./components/todoList";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import Modal from "./components/Modal";
+import { Container, Row, Col } from "react-bootstrap";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Provider store={store}>
+        <div className="main_div">
+          <div className="center_div">
+            <Container fluid>
+              <Row>
+                <Col className="head">
+                  <h5 className="heading">Today</h5>
+                </Col>
+                <Col>
+                  <AddTodo />
+                </Col>
+              </Row>
+            </Container>
+            <Modal />
+            <TodoList />
+          </div>
+        </div>
+      </Provider>
+    </>
   );
-}
+};
 
 export default App;
